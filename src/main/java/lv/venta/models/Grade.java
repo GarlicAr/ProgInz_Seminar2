@@ -42,6 +42,14 @@ public class Grade {
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
+	
+
+	public Grade(@Min(1) @Max(10) int gradeValue, Student student, Course course) {
+		super();
+		this.gradeValue = gradeValue;
+		this.student = student;
+		this.course = course;
+	}
 
 
 	

@@ -52,13 +52,16 @@ public class Course {
 	
 	@OneToMany(mappedBy = "course")
 	private Collection<Grade> grades;
-	
 
-	public Course(@Size(min = 5, max = 25) String title, int creditPoints) {
-		super();
+	public Course(@Size(min = 5, max = 25) String title, @Min(1) @Max(4) int creditPoints, Professor professor) {
+
 		this.title = title;
 		this.creditPoints = creditPoints;
+		this.professor = professor;
 	}
+	
+
+	
 	
 	
 	
