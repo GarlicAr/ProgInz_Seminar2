@@ -1,5 +1,7 @@
 package lv.venta.models;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.Column;
@@ -8,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -45,6 +49,9 @@ public class Course {
 	@OneToOne
 	@JoinColumn(name = "professor_id")
 	private Professor professor;
+	
+	@OneToMany(mappedBy = "course")
+	private Collection<Grade> grades;
 	
 
 	public Course(@Size(min = 5, max = 25) String title, int creditPoints) {
