@@ -40,7 +40,7 @@ public class Professor {
 	private String surname;
 	
 	@Column(name = "professor_degree")
-	@NotBlank
+	@NotNull
 	private Degree degree;
 
 	@OneToOne(mappedBy = "professor")

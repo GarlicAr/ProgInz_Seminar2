@@ -49,7 +49,7 @@ public class ProgInzSeminar2Application {
 				studentRep.save(stud1);
 				studentRep.save(stud2);
 				
-				Course c1 = new Course("Programmesanas Inzenierija", 4, prof3);
+				Course c1 = new Course("Programmesanasinzenierija", 4, prof3);
 				Course c2 = new Course("Sports", 2, prof1);
 				courseRep.save(c1);
 				courseRep.save(c2);
