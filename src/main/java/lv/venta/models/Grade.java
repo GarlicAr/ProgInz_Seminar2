@@ -16,12 +16,14 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "grade_table")
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Grade {
 	
 	@Column(name = "grade_id")
