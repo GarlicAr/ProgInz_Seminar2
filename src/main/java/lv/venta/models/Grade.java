@@ -30,7 +30,19 @@ public class Grade {
 	@Column(name = "grade_value")
 	@Min(value = 1)
 	@Max(value = 10)
-	private int value;
+	private int gradeValue;
+	
+	
+	
+
+	public Grade(@Min(1) @Max(10) int value) {
+		super();
+		this.gradeValue = value;
+	}
+	
+	
+	
+	
 	
 	
 	
