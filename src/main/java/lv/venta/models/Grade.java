@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -26,7 +28,8 @@ public class Grade {
 	private long gradeId;
 	
 	@Column(name = "grade_value")
-	@Size(min = 1, max = 10)
+	@Min(value = 1)
+	@Max(value = 10)
 	private int value;
 	
 	
