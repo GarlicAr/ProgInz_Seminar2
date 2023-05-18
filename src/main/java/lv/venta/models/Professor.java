@@ -1,5 +1,8 @@
 package lv.venta.models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import jakarta.persistence.*;
 import jakarta.validation.*;
 import jakarta.validation.constraints.Min;
@@ -43,15 +46,21 @@ public class Professor {
 	@NotNull
 	private Degree degree;
 
-	@OneToOne(mappedBy = "professor")
+	@ManyToMany(mappedBy = "professor")
 	@ToString.Exclude
-	private Course course;
+	private Collection<Course> course = new ArrayList<>();
 	
 	
-	public Professor(String name, String surname, Degree degree) {
+	public Professor(
+			String name, 
+			String surname, 
+			Degree degree, 
+			Collection<Course> courses) {
+		
 		this.name = name;
 		this.surname = surname;
 		this.degree = degree;
+		this.course = courses;
 	}
 	
 	

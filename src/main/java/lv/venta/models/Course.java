@@ -1,5 +1,6 @@
 package lv.venta.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -46,19 +49,25 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long courseId;
 	
-	@OneToOne
-	@JoinColumn(name = "professor_id")
-	private Professor professor;
+	@ManyToMany
+	@JoinTable(name = "course_prof_table",
+	joinColumns = @JoinColumn(name = "professor_id"),
+	inverseJoinColumns = @JoinColumn(name = "course_id"))
+	private Collection<Professor> professor = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "course")
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
-	public Course(@Size(min = 5, max = 25) String title, @Min(1) @Max(4) int creditPoints, Professor professor) {
+	public Course(
+			@Size(min = 5, max = 25) String title, 
+			@Min(1) @Max(4) int creditPoints, 
+			Collection<Professor> professor) {
 
 		this.title = title;
 		this.creditPoints = creditPoints;
 		this.professor = professor;
+		
 	}
 	
 

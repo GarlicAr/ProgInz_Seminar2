@@ -51,6 +51,7 @@ public class ProgInzSeminar2Application {
 				
 				Course c1 = new Course("Programmesanasinzenierija", 4, prof3);
 				Course c2 = new Course("Sports", 2, prof1);
+				Course c3 = new Course("Fizika", 3, prof2,prof1);
 				courseRep.save(c1);
 				courseRep.save(c2);
 				
