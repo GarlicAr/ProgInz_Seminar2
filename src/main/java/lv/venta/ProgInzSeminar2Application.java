@@ -39,7 +39,6 @@ public class ProgInzSeminar2Application {
 			@Override
 			public void run(String... args) throws Exception {
 				// TODO Auto-generated method stub
-	
 				
 				
 				Professor prof1 = new Professor("Andris", "Egitis", Degree.none);
