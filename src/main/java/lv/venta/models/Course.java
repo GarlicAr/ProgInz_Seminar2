@@ -51,6 +51,7 @@ public class Course {
 
 	@ManyToMany
 	@JoinTable(name = "course_prof_table", joinColumns = @JoinColumn(name = "professor_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
+	@ToString.Exclude
 	private Collection<Professor> professor = new ArrayList<>();
 
 	@OneToMany(mappedBy = "course")
