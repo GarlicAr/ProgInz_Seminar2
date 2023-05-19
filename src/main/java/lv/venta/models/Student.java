@@ -26,28 +26,10 @@ import lv.venta.models.Degree;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-public class Student {
+public class Student extends Person{
 	
 	
-	@Setter(value = AccessLevel.NONE)
-	@Column(name = "student_id")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idp;
-	
-	@Column(name = "student_name")
-	@NotNull
-	@Size(min = 3, max = 15)
-	@Pattern(regexp = "[A-Z]{1}[a-z\\ ]+")
-	private String name;
-	
-	@Column(name = "student_surname")
-	@NotNull
-	@Size(min = 3, max = 15)
-	@Pattern(regexp = "[A-Z]{1}[a-z\\ ]+")
-	private String surname;
-	
+
 	@OneToMany(mappedBy = "student")
 	@ToString.Exclude
 	private Collection<Grade> grades;
@@ -55,9 +37,7 @@ public class Student {
 
 	public Student(@NotNull @Size(min = 3, max = 15) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String name,
 			@NotNull @Size(min = 3, max = 15) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String surname) {
-		super();
-		this.name = name;
-		this.surname = surname;
+		super(name, surname);
 	}
 	
 	

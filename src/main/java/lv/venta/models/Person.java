@@ -20,7 +20,7 @@ public class Person {
 	@Column(name = "person_id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idpe;
+	private long personId;
 	
 	@Column(name = "student_name")
 	@NotNull
@@ -33,6 +33,12 @@ public class Person {
 	@Size(min = 3, max = 15)
 	@Pattern(regexp = "[A-Z]{1}[a-z\\ ]+")
 	private String surname;
+
+	public Person(@NotNull @Size(min = 3, max = 15) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String name,
+			@NotNull @Size(min = 3, max = 15) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+") String surname) {
+		this.name = name;
+		this.surname = surname;
+	}
 	
 	
 	
