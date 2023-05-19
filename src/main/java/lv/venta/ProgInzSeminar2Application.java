@@ -1,5 +1,8 @@
 package lv.venta;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,6 +39,8 @@ public class ProgInzSeminar2Application {
 			@Override
 			public void run(String... args) throws Exception {
 				// TODO Auto-generated method stub
+	
+				
 				
 				Professor prof1 = new Professor("Andris", "Egitis", Degree.none);
 				Professor prof2 = new Professor("Raita", "Rolande", Degree.mg);
@@ -51,7 +56,7 @@ public class ProgInzSeminar2Application {
 				
 				Course c1 = new Course("Programmesanasinzenierija", 4, prof3);
 				Course c2 = new Course("Sports", 2, prof1);
-				Course c3 = new Course("Fizika", 3, prof2,prof1);
+				Course c3 = new Course("Fizika", 3, prof2);
 				courseRep.save(c1);
 				courseRep.save(c2);
 				

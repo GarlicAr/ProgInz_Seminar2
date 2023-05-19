@@ -26,18 +26,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name="Table_Course")
+@Table(name = "Table_Course")
 @Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 public class Course {
-	
+
 	@Column(name = "course_title")
 	@Size(min = 5, max = 25)
 	private String title;
-	
+
 	@Column(name = "course_creditpoints")
 	@Min(value = 1)
 	@Max(value = 4)
@@ -48,32 +48,28 @@ public class Course {
 	@Setter(value = AccessLevel.NONE)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long courseId;
-	
+
 	@ManyToMany
-	@JoinTable(name = "course_prof_table",
-	joinColumns = @JoinColumn(name = "professor_id"),
-	inverseJoinColumns = @JoinColumn(name = "course_id"))
+	@JoinTable(name = "course_prof_table", joinColumns = @JoinColumn(name = "professor_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Collection<Professor> professor = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "course")
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
-	public Course(
-			@Size(min = 5, max = 25) String title, 
-			@Min(1) @Max(4) int creditPoints, 
-			Collection<Professor> professor) {
+	public Course(@Size(min = 5, max = 25) String title, @Min(1) @Max(4) int creditPoints,
+			Professor professor) {
 
 		this.title = title;
 		this.creditPoints = creditPoints;
 		this.professor = professor;
-		
-	}
-	
 
-	
-	
-	
-	
+	}
+
+	public void addProfessor(Professor prof) {
+		if (!professor.contains(prof)) {
+			professor.add(prof);
+		}
+	}
 
 }
