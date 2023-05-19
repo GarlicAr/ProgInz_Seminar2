@@ -44,20 +44,43 @@ public class ProgInzSeminar2Application {
 				Professor prof1 = new Professor("Andris", "Egitis", Degree.none);
 				Professor prof2 = new Professor("Raita", "Rolande", Degree.mg);
 				Professor prof3 = new Professor("Karina", "Skirmante", Degree.mg);
+				Professor prof4 = new Professor("Armands", "Opelis", Degree.bsc);
+				
 				professorRep.save(prof1);
 				professorRep.save(prof2);
 				professorRep.save(prof3);
+				professorRep.save(prof4);
+				
 				
 				Student stud1 = new Student("Arvids", "Ivbuls");
 				Student stud2 = new Student("Juris", "Palcevskis");
 				studentRep.save(stud1);
 				studentRep.save(stud2);
 				
-				Course c1 = new Course("Programmesanasinzenierija", 4, prof3);
-				Course c2 = new Course("Sports", 2, prof1);
-				Course c3 = new Course("Fizika", 3, prof2);
+				
+				ArrayList<Professor> profesori1 = new ArrayList<>();
+				profesori1.add(prof2);
+				profesori1.add(prof3);
+				ArrayList<Professor> profesori2 = new ArrayList<>();
+				profesori2.add(prof1);
+				profesori2.add(prof4);
+				ArrayList<Professor> profesori3 = new ArrayList<>();
+				profesori3.add(prof1);
+				
+				Course c1 = new Course("Programmesanasinzenierija", 4,profesori1);
+				Course c2 = new Course("Sports", 2, profesori2);
+				Course c3 = new Course("Fizika", 3, profesori3);
 				courseRep.save(c1);
 				courseRep.save(c2);
+				courseRep.save(c3);
+				
+				c1.addProfessor(prof2);
+				c1.addProfessor(prof3);
+				
+				c2.addProfessor(prof1);
+				c2.addProfessor(prof4);
+				
+				c3.addProfessor(prof1);
 				
 				gradeRep.save(new Grade(10, stud1, c1));
 				gradeRep.save(new Grade(6, stud2, c1));
